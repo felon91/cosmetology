@@ -14,14 +14,17 @@
     "format": "prettier --write .",
     "release": "HUSKY=0 release-it",
     "commit": "git-cz",
-    "type-check": "tsc --pretty --noEmit"
+    "type-check": "tsc --pretty --noEmit",
+    "postinstall": "husky install"
   },
   "dependencies": {
+    "antd": "4.22.8",
     "eslint": "7.32.0",
+    "eslint-plugin-flowtype": "6.1.0",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "eslint-plugin-flowtype": "6.1.0"
+    "sass": "1.54.5"
   },
   "devDependencies": {
     "@realtby/codestyle": "0.1.20",
