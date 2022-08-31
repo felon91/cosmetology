@@ -1,21 +1,24 @@
 import Image from 'next/image';
-import React from 'react';
-import Title from 'antd/lib/typography/Title';
-import { Button } from 'antd';
+import { Button, Container } from 'react-bootstrap';
+import cn from 'classnames';
 
-import photo from 'public/bg.jpg';
+import photo from 'public/bg3.jpg';
 
 import styles from './style.module.scss';
 
 export const MainScreen: React.FC = () => (
   <div className={styles.mainScreen}>
-    <Title className={styles.title}>Косметолог Минск</Title>
-    <Button size="large" type="primary" className={styles.button}>
-      Записаться
-    </Button>
-    <Title level={2} className={styles.subTitle}>
-      Скидка <b>-20%</b> на все процедуры для новых клиентов
-    </Title>
-    <Image layout="fill" objectPosition="center" objectFit="cover" src={photo} />
+    <Container className={cn('position-relative text-center', styles.container)}>
+      <h1 className={cn('mb-2', styles.title)}>Косметолог Минск</h1>
+      <Button size="lg" variant="primary" className={cn('mb-5', styles.button)}>
+        Записаться
+      </Button>
+      <h2 className={styles.subTitle}>
+        Скидка <b>-20%</b> на все процедуры для новых клиентов
+      </h2>
+    </Container>
+    <div className={styles.photo}>
+      <Image layout="fill" objectPosition="center 50%" objectFit="cover" src={photo} />
+    </div>
   </div>
 );

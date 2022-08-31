@@ -2,9 +2,18 @@
   position: fixed;
   width: 100%;
   z-index: 1;
+  height: auto;
 }
 
 .logo {
   color: #fff;
   font-size: 40px;
+  font-family: 'Dancing Script', cursive;
+}
+
+.menu {
+  line-height: 72px;
+  & > ul {
+    font-size: 18px;
+  }
 }
