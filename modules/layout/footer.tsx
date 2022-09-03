@@ -32,19 +32,19 @@ export const Footer: React.FC = () => (
   <footer className="bg-dark py-4">
     <Container>
       <Row>
-        <Col sm="4">
+        <Col md="4">
           <span className={cn(headerStyles.logo, 'fs-10')}>AliCosmetology</span>
         </Col>
-        <Col sm="4">
-          {links.map(({ link, title }) => (
-            <p className="text-white">
+        <Col md="4">
+          {links.map(({ link, title }, index) => (
+            <p key={index} className="text-white">
               <Link href={link}>
                 <a className="text-decoration-none text-white">{title}</a>
               </Link>
             </p>
           ))}
         </Col>
-        <Col sm="4">
+        <Col md="4">
           <p className="h5 mb-3 text-white">Контакты:</p>
           <p className="text-white">Адрес: г.Минск, ул.Мележа 1, (БЦ "Парус") каб. 412</p>
           <p className="mb-2.5">

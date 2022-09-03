@@ -16,8 +16,8 @@ export const Articles: React.FC<Props> = ({ className }) => (
     <Container>
       <Title>Статьи</Title>
       <Row className="g-3 mb-4">
-        {articles.map(({ img, title, description, link }) => (
-          <Col sm="6" lg="3">
+        {articles.map(({ img, title, description, link }, index) => (
+          <Col key={index} sm="6" lg="3">
             <Image className="mb-2" layout="responsive" src={img} />
             <h3 className="h4">{title}</h3>
             <p>{description}</p>

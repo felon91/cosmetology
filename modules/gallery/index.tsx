@@ -1,9 +1,9 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import Image from 'next/image';
+import { Container, Row } from 'react-bootstrap';
 
 import { Title } from 'components/title';
 
+import { GalleryItem } from 'modules/gallery/item';
 import { galleryImages } from 'modules/gallery/core';
 
 interface Props {
@@ -15,10 +15,8 @@ export const Gallery: React.FC<Props> = ({ className }) => (
     <Container>
       <Title>Галерея</Title>
       <Row className="g-3">
-        {galleryImages.map(({ thumbnail }) => (
-          <Col sm="6" lg="4">
-            <Image layout="responsive" src={thumbnail} />
-          </Col>
+        {galleryImages.map(({ thumbnail, original }, index) => (
+          <GalleryItem key={index} thumbnail={thumbnail} original={original} />
         ))}
       </Row>
     </Container>

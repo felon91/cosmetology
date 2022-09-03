@@ -22,12 +22,12 @@
   }
 
   & .title {
-    font-size: 76px;
+    font-size: 40px;
     color: #fff;
   }
 
   & .subTitle {
-    font-size: 32px;
+    font-size: 20px;
     color: #fff;
     font-weight: normal;
   }
@@ -37,5 +37,25 @@
     padding: 12px 30px;
     font-size: 26px;
     height: auto;
+  }
+
+  @media (min-width: 576px) {
+    & .title {
+      font-size: 60px;
+    }
+
+    & .subTitle {
+      font-size: 24px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    & .title {
+      font-size: 76px;
+    }
+
+    & .subTitle {
+      font-size: 32px;
+    }
   }
 }
