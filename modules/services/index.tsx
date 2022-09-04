@@ -12,7 +12,7 @@ interface Props {
 export const Services: React.FC<Props> = ({ className }) => (
   <section className={className}>
     <Container>
-      <Title>Стоимость услуг</Title>
+      <Title tag="h1">Стоимость услуг</Title>
       <Table className="mb-5" striped bordered responsive>
         <thead>
           <tr>

@@ -8,7 +8,7 @@ import type { PropsWithChildren } from 'react';
 export const MainLayout: React.FC<PropsWithChildren> = ({ children }) => (
   <>
     <Header />
-    <main>{children}</main>
+    <main className="mainGlobalPadding">{children}</main>
     <Footer />
   </>
 );

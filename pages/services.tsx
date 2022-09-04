@@ -5,7 +5,7 @@ import type { NextPage } from 'next';
 
 const ServicesPage: NextPage = () => (
   <MainLayout>
-    <Services className="pt-5 my-5" />
+    <Services className="my-5" />
   </MainLayout>
 );
 

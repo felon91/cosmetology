@@ -11,9 +11,20 @@
   font-family: 'Dancing Script', cursive;
 }
 
-.menu {
-  line-height: 72px;
-  & > ul {
-    font-size: 18px;
+.navLink {
+  padding-left: 4px;
+  padding-right: 4px;
+  @media (min-width: 576px) {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+}
+
+.fullWidth {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  @media (min-width: 576px) {
+    width: auto;
   }
 }
