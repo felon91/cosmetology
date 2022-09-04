@@ -1,10 +1,12 @@
-import { Col, Container, Pagination, Row } from 'react-bootstrap';
+import { Breadcrumb, Col, Container, Pagination, Row } from 'react-bootstrap';
 import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 import cn from 'classnames';
 
 import { Title } from 'components/title';
+
+import { Routes } from 'lib/routes';
 
 import { articles } from 'modules/articles/core';
 
@@ -13,11 +15,18 @@ import styles from './style.module.scss';
 interface Props {
   className?: string;
   withPagination?: boolean;
+  withBreadСrumbs?: boolean;
 }
 
-export const Articles: React.FC<Props> = ({ className, withPagination }) => (
+export const Articles: React.FC<Props> = ({ className, withPagination, withBreadСrumbs }) => (
   <section className={className}>
     <Container>
+      {withBreadСrumbs && (
+        <Breadcrumb>
+          <Breadcrumb.Item href={Routes.Main}>Главная</Breadcrumb.Item>
+          <Breadcrumb.Item active>Статьи</Breadcrumb.Item>
+        </Breadcrumb>
+      )}
       <Title>Статьи</Title>
       <Row className="g-3 mb-4">
         {articles.map(({ img, title, description, link }, index) => (

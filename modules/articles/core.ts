@@ -5,7 +5,7 @@ export const articles = [
     img: autumn,
     title: 'Чистка лица',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, sequi?',
-    link: '123',
+    link: '/articles/clean',
   },
   {
     img: autumn,

@@ -5,7 +5,7 @@ import type { NextPage } from 'next';
 
 const ArticlesPage: NextPage = () => (
   <MainLayout>
-    <Articles withPagination className="mt-5" />
+    <Articles withBreadСrumbs withPagination className="mt-5" />
   </MainLayout>
 );
 

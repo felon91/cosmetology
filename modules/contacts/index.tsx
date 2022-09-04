@@ -1,9 +1,11 @@
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import React, { useRef } from 'react';
-import { Container } from 'react-bootstrap';
+import { Breadcrumb, Container } from 'react-bootstrap';
 import Link from 'next/link';
 
 import { Title } from 'components/title';
+
+import { Routes } from 'lib/routes';
 
 import styles from './style.module.scss';
 
@@ -19,6 +21,10 @@ export const Contacts: React.FC<Props> = ({ className }) => {
   return (
     <section className={className}>
       <Container>
+        <Breadcrumb>
+          <Breadcrumb.Item href={Routes.Main}>Главная</Breadcrumb.Item>
+          <Breadcrumb.Item active>Контакты</Breadcrumb.Item>
+        </Breadcrumb>
         <Title tag="h1">Контакты</Title>
         <p className="fs-5">
           <b>Адрес:</b> г.Минск, ул.Мележа 1, (БЦ "Парус") каб. 412
