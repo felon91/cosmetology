@@ -1,0 +1,17 @@
+.article {
+  img {
+    transition-duration: 500ms;
+  }
+  &:hover {
+    img {
+      transform: scale(1.05);
+    }
+    > span {
+      text-decoration: underline;
+    }
+  }
+}
+
+.img {
+  height: 200px;
+}
