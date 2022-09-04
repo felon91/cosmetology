@@ -9,7 +9,7 @@ import styles from './style.module.scss';
 export const MainScreen: React.FC = () => (
   <div className={styles.mainScreen}>
     <Container className={cn('position-relative text-center', styles.container)}>
-      <h1 className={cn('mb-4 fw-semibold', styles.title)}>Косметолог Минск</h1>
+      <h1 className={cn('mb-4 fw-bold', styles.title)}>Косметолог Минск</h1>
       <Button size="lg" variant="primary" className={cn('mb-5', styles.button)}>
         Записаться
       </Button>
