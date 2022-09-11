@@ -16,7 +16,7 @@ export const MainScreen: React.FC = () => {
   return (
     <div className={styles.mainScreen}>
       <Container className={cn('position-relative text-center', styles.container)}>
-        <h1 className={cn('mb-4 fw-bold', styles.title)}>Косметолог Минск</h1>
+        <p className={cn('mb-3 fw-bold', styles.title)}>Косметолог Минск</p>
         <Button onClick={open} size="lg" variant="primary" className={cn('mb-5', styles.button)}>
           Записаться
         </Button>

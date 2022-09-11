@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+import type { ResponseShape } from 'lib/core';
 import { bffHost } from 'lib/core';
 
 import { MainLayout } from 'modules/layout';
@@ -26,12 +27,12 @@ const Home: NextPage<Props> = ({ articles }) => (
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const [articles] = await Promise.all([
-    axios.post<Article[]>(`${bffHost}/api/articles`, { limit: 4 }),
+    axios.post<ResponseShape<Article[]>>(`${bffHost}/api/articles`, { limit: 4 }),
   ]);
 
   return {
     props: {
-      articles: articles.data,
+      articles: articles.data.body,
     },
   };
 };

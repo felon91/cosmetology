@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 import { Button, Form, Modal } from 'react-bootstrap';
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 import { InputMaskField } from 'components/fields/input-mask';
@@ -16,7 +16,11 @@ interface Props {
   closeForm: () => void;
 }
 
-const BookingFormWrapper: React.FC = () => {
+interface FormWrapperProps {
+  isLoading?: boolean;
+}
+
+const BookingFormWrapper: React.FC<FormWrapperProps> = ({ isLoading }) => {
   const {
     register,
     formState: { errors },
@@ -47,7 +51,7 @@ const BookingFormWrapper: React.FC = () => {
         />
       </Form.Group>
 
-      <Button variant="success" type="submit">
+      <Button disabled={isLoading} variant="outline-primary" type="submit">
         Отправить заявку
       </Button>
     </>
@@ -58,21 +62,40 @@ interface DataProps {
   phone: string;
   name?: string;
 }
-const onSubmit = async (data: DataProps) => {
-  const result = await axios.post<ResponseShape<Article>>(`${bffHost}/api/bids`, data);
 
-  return result;
+export const BookingForm: React.FC<Props> = ({ isOpenForm, closeForm }) => {
+  const [pending, setPending] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const onSubmit = async (data: DataProps) => {
+    setSuccess(false);
+    setPending(true);
+    const result = await axios.post<ResponseShape<Article>>(`${bffHost}/api/bids`, data);
+
+    setPending(false);
+    setSuccess(true);
+    return result;
+  };
+
+  const hideModal = () => {
+    setSuccess(false);
+    closeForm();
+  };
+
+  return (
+    <Modal centered show={isOpenForm} onHide={hideModal} size="lg">
+      <Modal.Header closeButton>
+        <Modal.Title>Онлайн запись</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <FormWrapper onSubmit={onSubmit}>
+          <BookingFormWrapper isLoading={pending} />
+          {success && (
+            <p className="text-success fs-5 border-success p-2 mt-3 mb-0 border rounded">
+              Ваша заявка была успешно отправлена
+            </p>
+          )}
+        </FormWrapper>
+      </Modal.Body>
+    </Modal>
+  );
 };
-
-export const BookingForm: React.FC<Props> = ({ isOpenForm, closeForm }) => (
-  <Modal centered show={isOpenForm} onHide={closeForm} size="lg">
-    <Modal.Header closeButton>
-      <Modal.Title>Онлайн запись</Modal.Title>
-    </Modal.Header>
-    <Modal.Body>
-      <FormWrapper onSubmit={onSubmit}>
-        <BookingFormWrapper />
-      </FormWrapper>
-    </Modal.Body>
-  </Modal>
-);

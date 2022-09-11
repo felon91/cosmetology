@@ -8,7 +8,7 @@ interface Props {
 export const SeoText: React.FC<Props> = ({ className }) => (
   <section className={className}>
     <Container>
-      <h1>Косметология в Минске</h1>
+      <h1>Косметолог Минск</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, quo!</p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi eum eveniet iusto. A
