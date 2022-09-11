@@ -20,11 +20,7 @@ const links = [
   },
   {
     link: Routes.Contacts,
-    title: 'Задать вопрос',
-  },
-  {
-    link: Routes.Contacts,
-    title: 'Записаться на прием',
+    title: 'Контакты',
   },
 ];
 

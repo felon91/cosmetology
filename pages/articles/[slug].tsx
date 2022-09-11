@@ -1,49 +1,96 @@
 import { Breadcrumb, Container } from 'react-bootstrap';
 import React from 'react';
+import axios from 'axios';
+import Image from 'next/image';
 
 import { Routes } from 'lib/routes';
+import type { ResponseShape } from 'lib/core';
+import { bffHost } from 'lib/core';
 
 import { MainLayout } from 'modules/layout';
+import { ArticleType } from 'pages/articles/index';
 
-import type { NextPage } from 'next';
+import type { Article, ArticleContent } from 'pages/articles/index';
+import type { GetServerSideProps, NextPage } from 'next';
 
-const DetailArticlePage: NextPage = () => (
-  <MainLayout>
-    <Container className="mt-5">
-      <Breadcrumb>
-        <Breadcrumb.Item href={Routes.Main}>Главная</Breadcrumb.Item>
-        <Breadcrumb.Item href={Routes.Articles}>Статьи</Breadcrumb.Item>
-        <Breadcrumb.Item active>Название статьи</Breadcrumb.Item>
-      </Breadcrumb>
-      <article>
-        <h1>Косметология в Минске</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, quo!</p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi eum eveniet iusto. A
-          consequuntur dolor eos eum eveniet ex facere facilis laborum magni maiores maxime nulla,
-          omnis, optio porro qui reiciendis rem repellat saepe sed sunt! Alias aliquid eum eveniet
-          explicabo, illum incidunt, ipsum iusto magnam, nam natus possimus tempora.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid atque cumque fugiat in
-          minima modi molestiae nemo neque nobis optio pariatur perferendis, possimus ratione rerum
-          totam velit veniam! Ad animi assumenda consequatur culpa, cum cumque delectus doloremque,
-          doloribus esse est expedita facere impedit itaque iure laboriosam maiores modi
-          necessitatibus pariatur placeat possimus quaerat quam ratione velit. Aspernatur enim est
-          vitae voluptate? Ab aut commodi consequatur cumque cupiditate deserunt ducimus eveniet
-          exercitationem harum ipsam minus officiis quaerat quia reprehenderit tenetur vitae,
-          voluptate voluptates. Consequatur culpa esse et fugit impedit modi pariatur, repudiandae
-          temporibus? Debitis error minima molestiae nostrum placeat, sapiente unde!
-        </p>
-        <ul>
-          <li>Lorem ipsum dolor sit amet.</li>
-          <li>Lorem ipsum dolor sit amet.</li>
-          <li>Lorem ipsum dolor sit amet.</li>
-          <li>Lorem ipsum dolor sit amet.</li>
-        </ul>
-      </article>
-    </Container>
-  </MainLayout>
-);
+interface Props {
+  article: Article;
+}
+
+const renderContent = (content: ArticleContent[]) =>
+  content.map(item => {
+    const { value, type } = item;
+
+    switch (type) {
+      case ArticleType.Text: {
+        if (!Array.isArray(value)) {
+          return null;
+        }
+        return value.map((item, index) => <p key={index}>{item}</p>);
+      }
+      case ArticleType.List: {
+        if (!Array.isArray(value)) {
+          return null;
+        }
+        return (
+          <ul>
+            {value.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        );
+      }
+      case ArticleType.Img: {
+        if (Array.isArray(value)) {
+          return null;
+        }
+        return (
+          <div className="my-2">
+            <Image layout="responsive" width={100} height={100} src={`/articles/${value}`} />
+          </div>
+        );
+      }
+      default: {
+        return null;
+      }
+    }
+  });
+
+const DetailArticlePage: NextPage<Props> = ({ article }) => {
+  const { title, content } = article;
+
+  return (
+    <MainLayout>
+      <Container className="mt-5">
+        <Breadcrumb>
+          <Breadcrumb.Item href={Routes.Main}>Главная</Breadcrumb.Item>
+          <Breadcrumb.Item href={Routes.Articles}>Статьи</Breadcrumb.Item>
+          <Breadcrumb.Item active>{title}</Breadcrumb.Item>
+        </Breadcrumb>
+        <article>
+          <h1>{title}</h1>
+          {renderContent(content)}
+        </article>
+      </Container>
+    </MainLayout>
+  );
+};
+
+export const getServerSideProps: GetServerSideProps = async ctx => {
+  const { query } = ctx;
+
+  const pathSegment = (query.slug as string) || '';
+  const article = await axios.get<ResponseShape<Article>>(`${bffHost}/api/articles/${pathSegment}`);
+
+  if (!article.data.success) {
+    return { notFound: true };
+  }
+
+  return {
+    props: {
+      article: article.data.body,
+    },
+  };
+};
 
 export default DetailArticlePage;
