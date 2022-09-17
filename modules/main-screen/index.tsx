@@ -25,7 +25,7 @@ export const MainScreen: React.FC = () => {
         </p>
       </Container>
       <div className={styles.photo}>
-        <Image layout="fill" objectFit="cover" src={photo} />
+        <Image alt="косметолог минск" layout="fill" objectFit="cover" src={photo} />
       </div>
       <BookingForm isOpenForm={isOpen} closeForm={close} />
     </div>

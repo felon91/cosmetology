@@ -14,3 +14,10 @@ export interface ResponseShape<T> {
   body: T;
   errors?: Maybe<ServerError[]>;
 }
+
+export const enum Target {
+  blank = '_blank',
+  self = '_self',
+  parent = '_parent',
+  top = '_top',
+}

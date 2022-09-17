@@ -7,14 +7,20 @@ interface Props {
   mask?: string;
 }
 
+const handlePhoneValidate = (value?: string) =>
+  value?.includes('_') ? 'Номер телефона должен быть заполнен' : true;
+
 export const InputMaskField: React.FC<Props> = ({ name, mask = '+{375}(00)000-00-00' }) => {
   const { control } = useFormContext();
+
   const {
     field: { onChange, onBlur, ref },
   } = useController({
     name,
     control,
-    rules: { required: true },
+    rules: {
+      validate: handlePhoneValidate,
+    },
   });
 
   return (

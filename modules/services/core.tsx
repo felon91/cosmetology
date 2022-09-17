@@ -6,6 +6,8 @@ export const priceList = {
       title: 'Консультация',
       price: (
         <>
+          <span className="fw-bold">30р</span>
+          <br />
           (при проведении процедуры - <span className="fw-bold">бесплатно</span>)
         </>
       ),

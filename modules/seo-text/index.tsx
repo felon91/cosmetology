@@ -1,5 +1,8 @@
 import { Container } from 'react-bootstrap';
 import React from 'react';
+import Image from 'next/image';
+
+import kosmetolog from 'public/img/kosmetolog.jpg';
 
 interface Props {
   className?: string;
@@ -9,30 +12,37 @@ export const SeoText: React.FC<Props> = ({ className }) => (
   <section className={className}>
     <Container>
       <h1>Косметолог Минск</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, quo!</p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi eum eveniet iusto. A
-        consequuntur dolor eos eum eveniet ex facere facilis laborum magni maiores maxime nulla,
-        omnis, optio porro qui reiciendis rem repellat saepe sed sunt! Alias aliquid eum eveniet
-        explicabo, illum incidunt, ipsum iusto magnam, nam natus possimus tempora.
+        Здравствуйте, я очень рада видеть вас на своей странице и хочу рассказать немного о себе.
+        Меня зовут Алина, мне 31 год, я косметолог-эстетист с медицинским образованием.
+      </p>
+      <div className="float-md-end d-flex justify-content-center ms-md-4 my-md-2 my-3">
+        <Image quality={90} src={kosmetolog} alt="косметолог минск" width={300} height={300} />
+      </div>
+      <p>
+        Стать косметологом я мечтала давно, но, как мы знаем, чтобы мечты сбывались нужно
+        действовать.
       </p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid atque cumque fugiat in
-        minima modi molestiae nemo neque nobis optio pariatur perferendis, possimus ratione rerum
-        totam velit veniam! Ad animi assumenda consequatur culpa, cum cumque delectus doloremque,
-        doloribus esse est expedita facere impedit itaque iure laboriosam maiores modi
-        necessitatibus pariatur placeat possimus quaerat quam ratione velit. Aspernatur enim est
-        vitae voluptate? Ab aut commodi consequatur cumque cupiditate deserunt ducimus eveniet
-        exercitationem harum ipsam minus officiis quaerat quia reprehenderit tenetur vitae,
-        voluptate voluptates. Consequatur culpa esse et fugit impedit modi pariatur, repudiandae
-        temporibus? Debitis error minima molestiae nostrum placeat, sapiente unde!
+        В 2012 году окончила Минский медицинский колледж получив диплом медицинской сестры. Работала
+        по профессии с перерывами в декретный отпуск и уже тогда задумывалась о косметологии. В 2021
+        году четко для себя решила, что буду менять свою жизнь и приступила к обучению в учебном
+        центре Натальи Антонович, где началась совершенно другая жизнь.
       </p>
-      <ul>
-        <li>Lorem ipsum dolor sit amet.</li>
-        <li>Lorem ipsum dolor sit amet.</li>
-        <li>Lorem ipsum dolor sit amet.</li>
-        <li>Lorem ipsum dolor sit amet.</li>
-      </ul>
+      <p>
+        Во время учёбы ещё больше загорелась косметологией, мне так нравились результаты которых
+        можно достичь при помощи профессиональной косметики, что хотелось узнавать все больше и
+        больше.
+      </p>
+      <p>
+        Получив диплом косметолога-эстетиста 4,5 разряда я понимала, что это только начало и дальше
+        все зависит только от меня. Сейчас косметология не стоит на месте и учиться нужно постоянно.
+        Чем больше ты узнаешь нового, тем больше ты можешь дать своим клиентам.
+      </p>
+      <p>
+        Приглашаю вас на косметологические процедуры в свой уютный кабинет. Очень хочу делать людей
+        счастливыми и быть полезной!
+      </p>
     </Container>
   </section>
 );

@@ -35,7 +35,7 @@ export const Articles: React.FC<Props> = ({
       )}
       <Title>Статьи</Title>
       <Row className="g-3 mb-4">
-        {articles?.map(({ imgName, title, description, slug, id }, index) => (
+        {articles?.map(({ imgName, title, description, slug, _id: id }, index) => (
           <Col key={id} sm="6" lg="3">
             <div className={cn('position-relative border shadow', styles.article)}>
               <div className={cn('overflow-hidden mb-2', styles.img)}>

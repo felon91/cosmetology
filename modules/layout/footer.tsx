@@ -4,7 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
 
-import { Routes } from 'lib/routes';
+import { ExternalRoutes, Routes } from 'lib/routes';
+import { Target } from 'lib/core';
 
 import instagram from 'public/icons/instagram.svg';
 import headerStyles from 'modules/layout/style.module.scss';
@@ -49,8 +50,8 @@ export const Footer: React.FC = () => (
             </Link>
           </p>
           <p className="mb-0">
-            <Link href="/">
-              <a className="text-decoration-none d-inline-block text-white">
+            <Link href={ExternalRoutes.Instagram}>
+              <a target={Target.blank} className="text-decoration-none d-inline-block text-white">
                 <Image src={instagram} width={32} height={32} />
               </a>
             </Link>

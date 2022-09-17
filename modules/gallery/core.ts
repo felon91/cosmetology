@@ -1,30 +1,39 @@
-import autumn from './img/autumn.png';
-import clean from './img/clean.png';
-import procedures from './img/procedures.png';
+import gallery1Big from './img/gallery1-big.jpg';
+import gallery1Mini from './img/gallery1-mini.jpg';
+import gallery2Big from './img/gallery2-big.jpg';
+import gallery2Mini from './img/gallery2-mini.jpg';
+import gallery3Big from './img/gallery3-big.jpg';
+import gallery3Mini from './img/gallery3-mini.jpg';
+import gallery4Big from './img/gallery4-big.jpg';
+import gallery4Mini from './img/gallery4-mini.jpg';
+import gallery5Big from './img/gallery5-big.jpg';
+import gallery5Mini from './img/gallery5-mini.jpg';
+import gallery6Big from './img/gallery6-big.jpg';
+import gallery6Mini from './img/gallery6-mini.jpg';
 
 export const galleryImages = [
   {
-    thumbnail: autumn,
-    original: autumn,
+    thumbnail: gallery1Mini,
+    original: gallery1Big,
   },
   {
-    thumbnail: clean,
-    original: clean,
+    thumbnail: gallery2Mini,
+    original: gallery2Big,
   },
   {
-    thumbnail: procedures,
-    original: procedures,
+    thumbnail: gallery3Mini,
+    original: gallery3Big,
   },
   {
-    thumbnail: autumn,
-    original: autumn,
+    thumbnail: gallery4Mini,
+    original: gallery4Big,
   },
   {
-    thumbnail: clean,
-    original: clean,
+    thumbnail: gallery5Mini,
+    original: gallery5Big,
   },
   {
-    thumbnail: procedures,
-    original: procedures,
+    thumbnail: gallery6Mini,
+    original: gallery6Big,
   },
 ];

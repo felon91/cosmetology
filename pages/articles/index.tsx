@@ -20,7 +20,7 @@ export interface ArticleContent {
 }
 
 export interface Article {
-  id: string;
+  _id: string;
   title: string;
   content: ArticleContent[];
   imgName: string;

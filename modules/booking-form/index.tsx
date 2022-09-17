@@ -29,11 +29,13 @@ const BookingFormWrapper: React.FC<FormWrapperProps> = ({ isLoading }) => {
   return (
     <>
       <Form.Group className="mb-3" controlId="name">
-        <Form.Label required>Ваше имя</Form.Label>
+        <Form.Check>Ваше имя</Form.Check>
         <Form.Control {...register('name')} placeholder="Введите ваше имя" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="phone">
-        <Form.Label>Ваш телефон</Form.Label>
+        <Form.Label>
+          Ваш телефон <span className="text-danger">*</span>
+        </Form.Label>
         <InputMaskField name="phone" />
         {errors.phone && (
           <Form.Text className="text-danger">

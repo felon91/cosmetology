@@ -16,7 +16,7 @@ export const Gallery: React.FC<Props> = ({ className }) => (
       <Title>Галерея</Title>
       <Row className="g-3">
         {galleryImages.map(({ thumbnail, original }, index) => (
-          <GalleryItem key={index} thumbnail={thumbnail} original={original} />
+          <GalleryItem key={index} thumbnail={thumbnail} original={original} quality={90} />
         ))}
       </Row>
     </Container>
