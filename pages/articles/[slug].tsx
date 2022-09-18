@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import { Routes } from 'lib/routes';
 import type { ResponseShape } from 'lib/core';
-import { bffHost } from 'lib/core';
+import { API_HOST } from 'lib/env';
 
 import { MainLayout } from 'modules/layout';
 import { ArticleType } from 'pages/articles/index';
@@ -80,7 +80,9 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   const { query } = ctx;
 
   const pathSegment = (query.slug as string) || '';
-  const article = await axios.get<ResponseShape<Article>>(`${bffHost}/api/articles/${pathSegment}`);
+  const article = await axios.get<ResponseShape<Article>>(
+    `${API_HOST}/api/articles/${pathSegment}`
+  );
 
   if (!article.data.success) {
     return { notFound: true };

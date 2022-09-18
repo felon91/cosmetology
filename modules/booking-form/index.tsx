@@ -7,7 +7,7 @@ import { InputMaskField } from 'components/fields/input-mask';
 import { FormWrapper } from 'components/form';
 
 import type { ResponseShape } from 'lib/core';
-import { bffHost } from 'lib/core';
+import { API_HOST } from 'lib/env';
 
 import type { Article } from 'pages/articles';
 
@@ -68,13 +68,16 @@ interface DataProps {
 export const BookingForm: React.FC<Props> = ({ isOpenForm, closeForm }) => {
   const [pending, setPending] = useState(false);
   const [success, setSuccess] = useState(false);
+
   const onSubmit = async (data: DataProps) => {
     setSuccess(false);
     setPending(true);
-    const result = await axios.post<ResponseShape<Article>>(`${bffHost}/api/bids`, data);
+    const result = await axios.post<ResponseShape<Article>>(`${API_HOST}/api/bids`, data);
 
     setPending(false);
-    setSuccess(true);
+    if (result.data.success) {
+      setSuccess(true);
+    }
     return result;
   };
 

@@ -1,5 +1,3 @@
-export const bffHost = process.env.BFF_HOST || 'http://localhost:8081';
-
 export type Maybe<T> = T | null;
 export type Any = never;
 export type AnyObj = Record<string, Any>;
