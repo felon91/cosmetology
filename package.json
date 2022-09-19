@@ -10,7 +10,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "pm2": "pm2 start npm -- start --watch --ignore-watch=\"node_modules\"",
+    "pm2": "pm2 start npm --watch --ignore-watch=\"node_modules\"",
     "pm2-stop": "pm2 stop npm",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.json --fix --cache --max-warnings=0",
     "format": "prettier --write .",
