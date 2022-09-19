@@ -1,4 +1,9 @@
+/* eslint-disable no-unreachable */
+// noinspection UnreachableCodeJS
+
 import axios from 'axios';
+import Head from 'next/head';
+import React from 'react';
 
 import type { ResponseShape } from 'lib/core';
 import { API_HOST } from 'lib/env';
@@ -35,12 +40,22 @@ interface Props {
 }
 
 const ArticlesPage: NextPage<Props> = ({ articles }) => (
-  <MainLayout>
-    <Articles articles={articles} withBreadCrumbs withPagination className="mt-5" />
-  </MainLayout>
+  <>
+    <Head>
+      <title>Полезные статьи о косметологии</title>
+      <meta
+        name="description"
+        content="Косметолог в Минске c медицинским образованием, сохранение молодости без уколов, чистка лица, пилинг, лечение акне, массаж, подбор домашнего ухода."
+      />
+    </Head>
+    <MainLayout>
+      <Articles articles={articles} withBreadCrumbs withPagination className="mt-5" />
+    </MainLayout>
+  </>
 );
 
 export const getServerSideProps: GetServerSideProps = async () => {
+  return { notFound: true };
   const [articles] = await Promise.all([
     axios.post<ResponseShape<Article[]>>(`${API_HOST}/api/articles`, { limit: 4 }),
   ]);

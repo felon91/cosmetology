@@ -15,10 +15,10 @@ const links = [
     link: Routes.Services,
     title: 'Услуги',
   },
-  {
+  /*  {
     link: Routes.Articles,
     title: 'Статьи',
-  },
+  },*/
   {
     link: Routes.Contacts,
     title: 'Контакты',
