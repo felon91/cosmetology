@@ -12,7 +12,7 @@ class MyDocument extends Document {
 
   render(): JSX.Element {
     return (
-      <Html>
+      <Html lang="ru">
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="crossOrigin" />
@@ -20,6 +20,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:wght@400;700&display=swap"
             rel="stylesheet"
           />
+          <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         </Head>
         <body>
           <Main />

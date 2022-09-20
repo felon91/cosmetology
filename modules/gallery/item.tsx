@@ -11,9 +11,10 @@ interface Props {
   thumbnail: StaticImageData;
   original: StaticImageData;
   quality: number;
+  alt: string;
 }
 
-export const GalleryItem: React.FC<Props> = ({ thumbnail, original, quality }) => {
+export const GalleryItem: React.FC<Props> = ({ thumbnail, original, quality, alt }) => {
   const [{ isOpen }, { open, close }] = usePopup();
 
   return (
@@ -24,13 +25,13 @@ export const GalleryItem: React.FC<Props> = ({ thumbnail, original, quality }) =
           <div className={styles.zoom}>
             <Image width={40} height={40} src={zoom} quality={quality} alt="Увеличить" />
           </div>
-          <Image layout="responsive" src={thumbnail} quality={quality} />
+          <Image layout="responsive" src={thumbnail} quality={quality} alt={alt} />
         </div>
       </Col>
       <Modal show={isOpen} onHide={close} size="xl">
         <Modal.Header closeButton />
         <Modal.Body>
-          <Image layout="responsive" src={original} />
+          <Image layout="responsive" src={original} alt={alt} />
         </Modal.Body>
       </Modal>
     </>

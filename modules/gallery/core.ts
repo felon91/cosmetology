@@ -15,25 +15,31 @@ export const galleryImages = [
   {
     thumbnail: gallery1Mini,
     original: gallery1Big,
+    alt: 'Знакомство с косметологом',
   },
   {
     thumbnail: gallery2Mini,
     original: gallery2Big,
+    alt: 'Чистка лица',
   },
   {
     thumbnail: gallery3Mini,
     original: gallery3Big,
+    alt: 'Meso prof',
   },
   {
     thumbnail: gallery4Mini,
     original: gallery4Big,
+    alt: 'pH формула',
   },
   {
     thumbnail: gallery5Mini,
     original: gallery5Big,
+    alt: 'Косметологический кабинет',
   },
   {
     thumbnail: gallery6Mini,
     original: gallery6Big,
+    alt: 'Косметологический кабинет',
   },
 ];
