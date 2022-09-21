@@ -51,8 +51,12 @@ export const Footer: React.FC = () => (
           </p>
           <p className="mb-0">
             <Link href={ExternalRoutes.Instagram}>
-              <a target={Target.blank} className="text-decoration-none d-inline-block text-white">
-                <Image src={instagram} width={32} height={32} />
+              <a
+                target={Target.blank}
+                className="text-decoration-none d-inline-block text-white"
+                aria-label="Инстаграм"
+              >
+                <Image src={instagram} width={32} height={32} alt="Инстаграм" />
               </a>
             </Link>
           </p>
