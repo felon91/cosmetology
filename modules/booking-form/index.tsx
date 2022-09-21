@@ -72,7 +72,7 @@ export const BookingForm: React.FC<Props> = ({ isOpenForm, closeForm }) => {
   const onSubmit = async (data: DataProps) => {
     setSuccess(false);
     setPending(true);
-    const result = await axios.post<ResponseShape<Article>>(`${API_HOST}/api/bids`, data);
+    const result = await axios.post<ResponseShape<Article>>(`${API_HOST}/bids`, data);
 
     setPending(false);
     if (result.data.success) {

@@ -39,7 +39,7 @@ const Home: NextPage<Props> = ({ articles }) => (
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const [articles] = await Promise.all([
-    axios.post<ResponseShape<Article[]>>(`${API_HOST}/api/articles`, { limit: 4 }),
+    axios.post<ResponseShape<Article[]>>(`${API_HOST}/articles`, { limit: 4 }),
   ]);
 
   return {

@@ -80,9 +80,7 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   const { query } = ctx;
 
   const pathSegment = (query.slug as string) || '';
-  const article = await axios.get<ResponseShape<Article>>(
-    `${API_HOST}/api/articles/${pathSegment}`
-  );
+  const article = await axios.get<ResponseShape<Article>>(`${API_HOST}/articles/${pathSegment}`);
 
   if (!article.data.success) {
     return { notFound: true };
