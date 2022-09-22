@@ -13,7 +13,7 @@ import { BookingForm } from 'modules/booking-form';
 const links = [
   { route: Routes.Main, key: 'main-page', title: 'Главная' },
   { route: Routes.Services, key: 'services-page', title: 'Услуги' },
-  //{ route: Routes.Articles, key: 'articles-page', title: 'Статьи' },
+  { route: Routes.Articles, key: 'articles-page', title: 'Статьи' },
   { route: Routes.Contacts, key: 'contacts-page', title: 'Контакты' },
 ];
 

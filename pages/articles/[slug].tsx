@@ -2,6 +2,7 @@ import { Breadcrumb, Container } from 'react-bootstrap';
 import React from 'react';
 import axios from 'axios';
 import Image from 'next/image';
+import Head from 'next/head';
 
 import { Routes } from 'lib/routes';
 import type { ResponseShape } from 'lib/core';
@@ -17,7 +18,7 @@ interface Props {
   article: Article;
 }
 
-const renderContent = (content: ArticleContent[]) =>
+const renderContent = (content: ArticleContent[], title: string) =>
   content.map(item => {
     const { value, type } = item;
 
@@ -26,7 +27,13 @@ const renderContent = (content: ArticleContent[]) =>
         if (!Array.isArray(value)) {
           return null;
         }
-        return value.map((item, index) => <p key={index}>{item}</p>);
+        return (
+          <div>
+            {value.map((item, index) => (
+              <p key={index}>{item}</p>
+            ))}
+          </div>
+        );
       }
       case ArticleType.List: {
         if (!Array.isArray(value)) {
@@ -35,7 +42,9 @@ const renderContent = (content: ArticleContent[]) =>
         return (
           <ul>
             {value.map((item, index) => (
-              <li key={index}>{item}</li>
+              <li className="my-2" key={index}>
+                {item}
+              </li>
             ))}
           </ul>
         );
@@ -45,8 +54,8 @@ const renderContent = (content: ArticleContent[]) =>
           return null;
         }
         return (
-          <div className="my-2">
-            <Image layout="responsive" width={100} height={100} src={`/articles/${value}`} />
+          <div className="float-md-end my-2">
+            <Image alt={title} width={310} height={250} src={`/articles/${value}`} />
           </div>
         );
       }
@@ -57,22 +66,28 @@ const renderContent = (content: ArticleContent[]) =>
   });
 
 const DetailArticlePage: NextPage<Props> = ({ article }) => {
-  const { title, content } = article;
+  const { title, content, description } = article;
 
   return (
-    <MainLayout>
-      <Container className="mt-5">
-        <Breadcrumb>
-          <Breadcrumb.Item href={Routes.Main}>Главная</Breadcrumb.Item>
-          <Breadcrumb.Item href={Routes.Articles}>Статьи</Breadcrumb.Item>
-          <Breadcrumb.Item active>{title}</Breadcrumb.Item>
-        </Breadcrumb>
-        <article>
-          <h1>{title}</h1>
-          {renderContent(content)}
-        </article>
-      </Container>
-    </MainLayout>
+    <>
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+      </Head>
+      <MainLayout>
+        <Container className="mt-5">
+          <Breadcrumb>
+            <Breadcrumb.Item href={Routes.Main}>Главная</Breadcrumb.Item>
+            <Breadcrumb.Item href={Routes.Articles}>Статьи</Breadcrumb.Item>
+            <Breadcrumb.Item active>{title}</Breadcrumb.Item>
+          </Breadcrumb>
+          <article className="pb-4">
+            <h1>{title}</h1>
+            {renderContent(content, title)}
+          </article>
+        </Container>
+      </MainLayout>
+    </>
   );
 };
 

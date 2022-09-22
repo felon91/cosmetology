@@ -49,13 +49,12 @@ const ArticlesPage: NextPage<Props> = ({ articles }) => (
       />
     </Head>
     <MainLayout>
-      <Articles articles={articles} withBreadCrumbs withPagination className="mt-5" />
+      <Articles articles={articles} withBreadCrumbs withPagination={false} className="mt-5" />
     </MainLayout>
   </>
 );
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  return { notFound: true };
   const [articles] = await Promise.all([
     axios.post<ResponseShape<Article[]>>(`${API_HOST}/articles`, { limit: 4 }),
   ]);
