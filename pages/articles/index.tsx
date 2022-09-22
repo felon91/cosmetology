@@ -17,11 +17,14 @@ export enum ArticleType {
   Text = 'text',
   List = 'list',
   Img = 'img',
+  Link = 'link',
+  Complex = 'complex',
 }
 
 export interface ArticleContent {
   type: ArticleType;
-  value: string[] | string;
+  value: string[] | string | ArticleContent[];
+  href?: string;
 }
 
 export interface Article {

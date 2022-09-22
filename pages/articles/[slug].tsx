@@ -3,6 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import Image from 'next/image';
 import Head from 'next/head';
+import Link from 'next/link';
 
 import { Routes } from 'lib/routes';
 import type { ResponseShape } from 'lib/core';
@@ -20,20 +21,14 @@ interface Props {
 
 const renderContent = (content: ArticleContent[], title: string) =>
   content.map(item => {
-    const { value, type } = item;
+    const { value, type, href = Routes.Main } = item;
 
     switch (type) {
       case ArticleType.Text: {
         if (!Array.isArray(value)) {
           return null;
         }
-        return (
-          <div>
-            {value.map((item, index) => (
-              <p key={index}>{item}</p>
-            ))}
-          </div>
-        );
+        return value.map((item, index) => <p key={index}>{item as string}</p>);
       }
       case ArticleType.List: {
         if (!Array.isArray(value)) {
@@ -43,7 +38,7 @@ const renderContent = (content: ArticleContent[], title: string) =>
           <ul>
             {value.map((item, index) => (
               <li className="my-2" key={index}>
-                {item}
+                {item as string}
               </li>
             ))}
           </ul>
@@ -57,6 +52,39 @@ const renderContent = (content: ArticleContent[], title: string) =>
           <div className="float-md-end my-2">
             <Image alt={title} width={310} height={250} src={`/articles/${value}`} />
           </div>
+        );
+      }
+      case ArticleType.Link: {
+        if (typeof value !== 'string') {
+          return null;
+        }
+        return (
+          <Link passHref href={href}>
+            <a>{value}</a>
+          </Link>
+        );
+      }
+      case ArticleType.Complex: {
+        if (!Array.isArray(value)) {
+          return null;
+        }
+        return (
+          <p>
+            {value.map((item, index) => {
+              if (typeof item === 'string') {
+                return null;
+              }
+              const { value, type, href = Routes.Main } = item;
+
+              return type === ArticleType.Link ? (
+                <Link passHref href={href}>
+                  <a>{value as string}</a>
+                </Link>
+              ) : (
+                (value as string)
+              );
+            })}
+          </p>
         );
       }
       default: {
