@@ -24,6 +24,7 @@ class MyDocument extends Document {
             name="google-site-verification"
             content="XDLkzSv4yx8fso4b0yPtcNRtnRXykukObDODrpigzVc"
           />
+          <meta name="yandex-verification" content="529464850001550b" />
         </Head>
         <body>
           <Main />
