@@ -39,7 +39,7 @@ export const Articles: React.FC<Props> = ({
           <Col key={id} sm="6" lg="3">
             <div className={cn('position-relative border shadow', styles.article)}>
               <div className={cn('overflow-hidden mb-2', styles.img)}>
-                <Image layout="responsive" width={100} height={100} src={`/articles/${imgName}`} />
+                <Image layout="responsive" width={310} height={200} src={`/articles/${imgName}`} />
               </div>
               <h3 className="h4 px-3">{title}</h3>
               <p className="px-3">{description}</p>

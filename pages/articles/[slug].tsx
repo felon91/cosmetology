@@ -50,7 +50,7 @@ const renderContent = (content: ArticleContent[], title: string) =>
         }
         return (
           <div className="float-md-end my-2">
-            <Image alt={title} width={310} height={250} src={`/articles/${value}`} />
+            <Image width={310} height={200} alt={title} src={`/articles/${value}`} />
           </div>
         );
       }
